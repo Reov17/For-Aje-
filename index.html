@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read Me Poems</title>
+  <style>
+    body {
+      background: #fdfdfd;
+      font-family: "Georgia", serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 30px;
+    }
+
+    .notebook {
+      width: 600px;
+      min-height: 500px;
+      background: repeating-linear-gradient(
+        white,
+        white 28px,
+        #dcdcdc 29px
+      );
+      border: 2px solid #ccc;
+      padding: 40px;
+      line-height: 28px;
+      font-size: 15px;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    #author {
+      text-align: right;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    #message {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <div id="message">I hope you read it...</div>
+    <div id="notebook" class="notebook"></div>
+    <div class="buttons">
+      <button onclick="showLetter(1)">Read it (Poem 1)</button>
+      <button onclick="showLetter(2)">Read it (Poem 2)</button>
+    </div>
+  </div>
+
+  <script>
+    function typeWriter(text, element, speed, callback) {
+      let i = 0;
+      element.innerHTML = "";
+      function typing() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, speed);
+        } else if (callback) {
+          callback();
+        }
+      }
+      typing();
+    }
+
+    function showLetter(letterNumber) {
+      // Clear "I hope you read it" message
+      document.getElementById("message").innerHTML = "";
+
+      let poem1 = `This is the first poem for testing only.
+You can replace this with another poem if you like.
+
+- Revii`;
+
+      let poem2 = `Oo maaaring ikaw maaari ring iba,
+Sa magulong mundo, nahanap kita. 
+Nahagilap at puso'y napayapa. 
+Tanging daing ikaw'y makasama. 
+Na sana maaaring ikaw na. 
+
+Iba ang dating kapag kausap ka. 
+Hindi inaasahang ako'y napahanga. 
+bukod sa iyong kagandahan.
+kundi dahil kakaiba ka.
+
+Ako'y napatanong, ikaw ba'y kaloob? 
+O panibagong yugto lang sa buhay ko? 
+Tanong na siyang hindi ko masasagot.
+Sapagka't hindi ko alam ang tulot. 
+
+Ngunit sa panata ko lahat isasambitla. 
+Tanging Ama ang siyang bahala. 
+Kung tayo ba'y magkakatugma, 
+O iba ang siyang ipagkakaloob niya.
+
+Andito lang ako Aje kahit wala kana.
+babantayan pa rin kita kahit di na tayong dalwa.
+Oo, Mahal pa rin kita pero bawal diba.
+Ngunit andito lang ako mag-aantay hangang pwede na.
+
+- Revii`;
+
+      let letterText = (letterNumber === 1) ? poem1 : poem2;
+      let notebook = document.getElementById("notebook");
+      notebook.innerHTML = "";
+
+      typeWriter(letterText, notebook, 55); // speed ~55ms per char
+    }
+  </script>
+
+</body>
+</html>
