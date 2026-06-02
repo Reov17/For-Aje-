@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will YOU LOVE ME?❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#ffe4ec;
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+}
+
+h1{
+    color:#ff4d88;
+    margin-bottom:30px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+#yesBtn{
+    background:#4CAF50;
+    color:white;
+    margin-right:10px;
+}
+
+#noBtn{
+    position:absolute;
+    background:#ff4d88;
+    color:white;
+}
+</style>
+</head>
+<body>
+
+<h1>I love you do you love me too?❤️</h1>
+
+<div>
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 😔</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+let noSize = 1;
+
+noBtn.style.left = "55%";
+noBtn.style.top = "55%";
+
+noBtn.addEventListener("click", () => {
+    noSize -= 0.1;
+
+    if(noSize < 0.2){
+        noSize = 0.2;
+    }
+
+    noBtn.style.transform = `scale(${noSize})`;
+
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+});
+
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div style="text-align:center">
+            <h1>YAY! ❤️</h1>
+            <h2>I love you more🥰</h2>
+            <p>my Pattie. 💖</p>
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
